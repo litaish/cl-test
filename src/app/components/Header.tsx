@@ -2,7 +2,7 @@
 const Header = ({ title }: { title: string }) => {
   return (
     <header>
-        {title}
+        <h1>{title}</h1>
     </header>
   )
 };
