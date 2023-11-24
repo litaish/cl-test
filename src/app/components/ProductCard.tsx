@@ -4,7 +4,7 @@ import Link from "next/link";
 const ProductCard = ({ id, name, category, currency, price }: Product) => {
     return (
         <Link href={{
-            pathname: `/${id}`,
+            pathname: '/product',
             query: { id, name, category, currency, price }
         }}>
             <div className="flex">
