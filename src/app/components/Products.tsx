@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 import { useProducts } from "../hooks/useProducts";
 import Pagination from "./Pagination";
 import { paginate } from "../utils/paginate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Products = ({ query }: { query: string }) => {
   const { data, isLoading, isError } = useProducts();
@@ -15,6 +15,11 @@ const Products = ({ query }: { query: string }) => {
   const handlePageChange = (page: number): void => {
     setCurrentPage(page);
   }
+
+  // Set page to first whenever the user types in the searchbox
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [query])
 
   // Filter products according to the query in URL, return ProductCards that match
   const filteredProducts = data

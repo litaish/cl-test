@@ -19,7 +19,7 @@ const Pagination = ({
             <ul>
                 {pages.map((page) => (
                     <li key={page}>
-                        <button onClick={() => onPageChange(page)}>
+                        <button disabled={currentPage === page} onClick={() => onPageChange(page)}>
                             {page}
                         </button>
                     </li>
