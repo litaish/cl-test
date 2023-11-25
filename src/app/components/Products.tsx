@@ -2,12 +2,39 @@
 
 import ProductCard from "./ProductCard";
 import { useProducts } from "../hooks/useProducts";
+import Pagination from "./Pagination";
+import { paginate } from "../utils/paginate";
+import { useState } from "react";
 
 const Products = ({ query }: { query: string }) => {
   const { data, isLoading, isError } = useProducts();
 
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const pageSize = 4;
+
+  const handlePageChange = (page: number): void => {
+    setCurrentPage(page);
+  }
+
+  // Filter products according to the query in URL, return ProductCards that match
+  const filteredProducts = data
+    ? data
+      .filter((item) => {
+        return query.toLowerCase() === ""
+          ? item
+          : item.name.toLowerCase().includes(query.toLowerCase());
+      })
+      .map((product) => {
+        return <ProductCard key={product.id} {...product} />;
+      })
+    : [];
+
+  // Split the filtered products into batches (pages)
+  const paginatedProducts = paginate(filteredProducts, currentPage, pageSize);
+
   return (
     <div>
+      
       {isLoading && (
         <div>Loading...</div>
       )}
@@ -16,16 +43,18 @@ const Products = ({ query }: { query: string }) => {
         <div>Error loading product data! Try again.</div>
       )}
 
-      { /* Search functionality - fiter by product name, by URL query */}
-      {data && (data
-        .filter((item) => {
-          return query.toLowerCase() === ''
-            ? item
-            : item.name.toLowerCase().includes(query.toLowerCase());
-        })
-        .map((product) => {
-          return <ProductCard key={product.id} {...product} />;
-        }))}
+      {data?.length! > 0 && (
+        <div>
+          {paginatedProducts}
+          <Pagination
+            itemsSize={filteredProducts.length}
+            currentPage={currentPage}
+            pageSize={pageSize}
+            onPageChange={handlePageChange}
+          />
+        </div>
+      )}
+
     </div>
   )
 };

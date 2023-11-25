@@ -8,16 +8,14 @@ const Home = ({
   }: {
     searchParams?: {
       query?: string;
-      page?: string;
     };
   }) => {
     const query = searchParams?.query || '';
-    const currentPage = Number(searchParams?.page) || 1;
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <Header title="All products"/>
-            <Search placeholder="Type a product ..."/>
+            <Search placeholder="Type a product name ..."/>
             <Products query={query}/>
         </main>
     )
