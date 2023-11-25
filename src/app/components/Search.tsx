@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 /* Using NextJS capabilities, use the URL params as a state for storing
     the search term
  */
-const Search = ({ placeholder }: { placeholder: string }) => {
+const Search = ({ placeholder }: { placeholder?: string }) => {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
@@ -27,7 +27,7 @@ const Search = ({ placeholder }: { placeholder: string }) => {
             <label htmlFor="site-search">Search the site:</label>
             <input 
             type="search" 
-            placeholder={placeholder} 
+            placeholder={placeholder ? placeholder : ""} 
             defaultValue={searchParams.get('query')?.toString()} // Keep query and input in sync, for example, in case of a refresh
             onChange={(e) => handleSearch(e.target.value)} 
             />
