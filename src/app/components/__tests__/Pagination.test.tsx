@@ -31,4 +31,18 @@ describe("Pagination", () => {
         expect(buttons[2].disabled).toBe(true);
         
     })
+    it("Display no buttons when all items fit in one batch", () => {
+        const { container } = render(
+            <Pagination
+                itemsSize={4}
+                currentPage={1}
+                pageSize={10}
+                onPageChange={() => {}}
+            />)
+
+        const buttons = container.querySelectorAll('button');
+
+        expect(buttons.length).toBe(0);
+        
+    })
 })
