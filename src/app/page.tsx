@@ -4,21 +4,21 @@ import Search from "./components/Search";
 
 /* Home page is a server component so it can access searchParams prop */
 const Home = ({
-    searchParams,
-  }: {
-    searchParams?: {
-      query?: string;
-    };
-  }) => {
-    const query = searchParams?.query || '';
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+  };
+}) => {
+  const query = searchParams?.query || '';
 
-    return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <Header title="All products"/>
-            <Search placeholder="Type a product name ..."/>
-            <Products query={query}/>
-        </main>
-    )
+  return (
+    <main className="flex min-h-screen flex-col gap-8 mt-8 p-4">
+      <Header title="All products" />
+      <Search placeholder="Type a product name ..." />
+      <Products query={query} />
+    </main>
+  )
 }
 
 export default Home;

@@ -1,10 +1,32 @@
 import { Product } from "@/app/interfaces/product.interface";
+import CategoryTag from "@/app/components/CategoryTag";
+import React from "react";
 
-const ProductDetails = ({ searchParams }: { searchParams: Product }) => {   
+const ProductSection = ({ title, children }: { title: string, children: React.ReactNode }) => {
     return (
-        <div>
-            Product page for product {searchParams.id}
+        <div className="flex flex-col gap-1">
+            <h2 className="font-semibold text-slate-700">{title}</h2>
+            {children}
         </div>
+    );
+}
+
+const ProductDetails = ({ searchParams }: { searchParams: Product }) => {
+    const { name, price, currency, category, description } = searchParams;
+
+    return (
+        <main className="flex min-h-screen flex-col gap-6 mt-8 p-4">
+            <h1 className="uppercase text-xl text-slate-700">{name}</h1>
+            <p className="text-4xl font-extralight text-slate-600">
+                {Number(price).toLocaleString('de-DE', { style: 'currency', currency: currency })}
+            </p>
+            <ProductSection title="Description">
+                <p className="text-slate-600">{description}</p>
+            </ProductSection>
+            <ProductSection title="Category">
+                <CategoryTag categoryName={category} />
+            </ProductSection>
+        </main>
     )
 };
 

@@ -13,6 +13,8 @@
         "coverage": "jest --coverage"
     },
     "dependencies": {
+        "@mdi/js": "^7.3.67",
+        "@mdi/react": "^1.6.1",
         "@tanstack/react-query": "^5.8.6",
         "@tanstack/react-query-devtools": "^5.8.6",
         "axios": "^1.6.2",

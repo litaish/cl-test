@@ -14,12 +14,13 @@ const Pagination = ({
     if (pagesCount === 1) return null;
     const pages = Array.from({ length: pagesCount }, (_, i) => i + 1); // Array of page numbers
 
+
     return (
-        <div>
-            <ul>
+        <div className="mt-8">
+            <ul className="flex justify-center gap-8">
                 {pages.map((page) => (
-                    <li key={page}>
-                        <button disabled={currentPage === page} onClick={() => onPageChange(page)}>
+                    <li key={page} className={`${currentPage === page ? 'text-slate-400' : 'text-slate-700'}`}>
+                        <button className="text-center p-1" disabled={currentPage === page} onClick={() => onPageChange(page)}>
                             {page}
                         </button>
                     </li>

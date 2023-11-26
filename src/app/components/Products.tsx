@@ -4,10 +4,12 @@ import ProductCard from "./ProductCard";
 import { useProducts } from "../hooks/useProducts";
 import Pagination from "./Pagination";
 import { paginate } from "../utils/paginate";
+import LoadingSpinner from "./LoadingSpinner";
+import ErrorAlert from "./ErrorAlert";
 import { useEffect, useState } from "react";
 
 const Products = ({ query }: { query: string }) => {
-  const { data, isLoading, isError } = useProducts();
+  const { data, isLoading, isError, error } = useProducts();
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 4;
@@ -41,15 +43,15 @@ const Products = ({ query }: { query: string }) => {
     <div>
       
       {isLoading && (
-        <div>Loading...</div>
+        <LoadingSpinner text="Loading products ..."/>
       )}
 
       {isError && (
-        <div>Error loading product data! Try again.</div>
+        <ErrorAlert message={error.message} />
       )}
 
       {data?.length! > 0 && (
-        <div>
+        <div className="flex flex-col gap-4">
           {paginatedProducts}
           <Pagination
             itemsSize={filteredProducts.length}
