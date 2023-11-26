@@ -25,7 +25,7 @@ const Search = ({ placeholder }: { placeholder?: string }) => {
     }
 
     return (
-        <div className="flex border rounded-md">
+        <div className="flex border rounded-md xl:w-1/2">
             <label htmlFor="search"></label>
             <input
                 id="search"

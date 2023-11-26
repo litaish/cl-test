@@ -40,7 +40,7 @@ const Products = ({ query }: { query: string }) => {
   const paginatedProducts = paginate(filteredProducts, currentPage, pageSize);
 
   return (
-    <div>
+    <div className="xl:w-1/2">
       
       {isLoading && (
         <LoadingSpinner text="Loading products ..."/>

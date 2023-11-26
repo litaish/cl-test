@@ -10,10 +10,10 @@ const Home = ({
     query?: string;
   };
 }) => {
-  const query = searchParams?.query || '';
+  const query: string = searchParams?.query || '';
 
   return (
-    <main className="flex min-h-screen flex-col gap-8 mt-8 p-4">
+    <main className="flex min-h-screen flex-col gap-8 mt-8 p-4 md:px-8 lg:px-16 xl:items-center xl:gap-12">
       <Header title="All products" />
       <Search placeholder="Type a product name ..." />
       <Products query={query} />

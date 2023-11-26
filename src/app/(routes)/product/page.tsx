@@ -15,13 +15,13 @@ const ProductDetails = ({ searchParams }: { searchParams: Product }) => {
     const { name, price, currency, category, description } = searchParams;
 
     return (
-        <main className="flex min-h-screen flex-col gap-6 mt-8 p-4">
-            <h1 className="uppercase text-xl text-slate-700">{name}</h1>
-            <p className="text-4xl font-extralight text-slate-600">
+        <main className="flex min-h-screen flex-col gap-6 mt-8 p-4 md:px-8">
+            <h1 className="uppercase text-xl text-slate-700 lg:text-2xl">{name}</h1>
+            <p className="text-4xl font-extralight text-slate-600 lg:text-5xl">
                 {Number(price).toLocaleString('de-DE', { style: 'currency', currency: currency })}
             </p>
             <ProductSection title="Description">
-                <p className="text-slate-600">{description}</p>
+                <p className="text-slate-600 text-base/loose">{description}</p>
             </ProductSection>
             <ProductSection title="Category">
                 <CategoryTag categoryName={category} />
