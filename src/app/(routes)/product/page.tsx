@@ -21,22 +21,24 @@ const ProductDetails = ({ searchParams }: { searchParams: Product }) => {
     const { name, price, currency, category, description } = searchParams
 
     return (
-        <main className="mt-8 flex min-h-screen flex-col gap-6 p-4 md:px-8">
-            <h1 className="text-xl uppercase text-slate-700 lg:text-2xl">
-                {name}
-            </h1>
-            <p className="text-4xl font-extralight text-slate-600 lg:text-5xl">
-                {Number(price).toLocaleString('de-DE', {
-                    style: 'currency',
-                    currency: currency,
-                })}
-            </p>
-            <ProductSection title="Description">
-                <p className="text-base/loose text-slate-600">{description}</p>
-            </ProductSection>
-            <ProductSection title="Category">
-                <CategoryTag categoryName={category} />
-            </ProductSection>
+        <main className="mt-8 flex items-center min-h-screen flex-col p-4 md:px-8">
+            <div className='flex flex-col gap-6'>
+                <h1 className="text-xl uppercase text-slate-700 lg:text-2xl">
+                    {name}
+                </h1>
+                <p className="text-4xl font-extralight text-slate-600 lg:text-5xl">
+                    {Number(price).toLocaleString('de-DE', {
+                        style: 'currency',
+                        currency: currency,
+                    })}
+                </p>
+                <ProductSection title="Description">
+                    <p className="text-base/loose text-slate-600">{description}</p>
+                </ProductSection>
+                <ProductSection title="Category">
+                    <CategoryTag categoryName={category} />
+                </ProductSection>
+            </div>
         </main>
     )
 }
