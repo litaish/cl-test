@@ -16,11 +16,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={`${inter.className} antialiased bg-slate-50`}>
+            <body className={`${inter.className} bg-slate-50 antialiased`}>
                 <Navbar />
-                <TanstackProvider>
-                    {children}
-                </TanstackProvider>
+                <TanstackProvider>{children}</TanstackProvider>
             </body>
         </html>
     )

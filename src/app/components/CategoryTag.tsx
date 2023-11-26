@@ -1,10 +1,9 @@
-
 const CategoryTag = ({ categoryName }: { categoryName: string }) => {
     return (
-        <div className="bg-red-500 rounded-full text-center text-xs text-slate-50 font-semibold py-1 px-6 max-w-fit">
+        <div className="max-w-fit rounded-full bg-red-500 px-6 py-1 text-center text-xs font-semibold text-slate-50">
             {categoryName}
         </div>
     )
-};
+}
 
 export default CategoryTag
